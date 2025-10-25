@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Modal ({ show, onClose, onAddToCart})  {
+function Modal ({ show, product, onClose, onAddToCart})  {
     if(!show) return null;
     const handleAddClick = () => {
         const quantity = parseInt(document.getElementById("quantityInput").value);
@@ -12,6 +12,7 @@ function Modal ({ show, onClose, onAddToCart})  {
         <div className="modal-overlay">
             <div className="modal-content">
                  <h2>Select Quantity</h2>
+                 <p>{product?.name}</p>
                  <input 
                     type="number"
                     min="1"

@@ -15,7 +15,7 @@ function Products() {
     setShowModal(true);
   }
   const handleConfirmAdd = (quantity) => {
-    console.log( `Added ${quantity} of N{selectedProduct.name}`);
+    console.log( `Added ${quantity} of ${selectedProduct.name}`);
     setShowModal(false);
   }
   return (
@@ -23,14 +23,16 @@ function Products() {
      <div className="products-container">
         <h1>Our Products</h1>
         <div className="product-grid">
-            <ProductCard name="Rice" price={500} img={product1} />
-            <ProductCard name="Beans" price={400} img={product2} />
-            <ProductCard name="Corn" price={200} img={product3} />
-            <ProductCard name="Egusi" price={400} img={product1} />
-            <ProductCard name="Okpa" price={600} img={product2} />
-            <ProductCard name="Groundnut" price={500} img={product3} />
+            <ProductCard name="Rice" price={500} img={product1} onAdd={() => handleAddClick({name:"Rice", price: 500})} />
+            <ProductCard name="Beans" price={400} img={product2} onAdd={() => handleAddClick({name:"Beans", price: 400})} />
+            <ProductCard name="Corn" price={200} img={product3} onAdd={() => handleAddClick({name:"Corn", price: 200})} />
+            <ProductCard name="Egusi" price={400} img={product1} onAdd={() => handleAddClick({name:"Egusi", price: 400})} />
+            <ProductCard name="Okpa" price={600} img={product2} onAdd={() => handleAddClick({name:"Okpa", price: 600})} />
+            <ProductCard name="Groundnut" price={500} img={product3} onAdd={() => handleAddClick({name:"Groundnut", price: 500})} />
         </div>
-        <Modal show={showModal} onClose={() => setShowModal(false)} onAddToCart={handleConfirmAdd} />
+        {showModal && (
+          <Modal show={showModal} product={selectedProduct} onClose={() => setShowModal(false)} onAddToCart={handleConfirmAdd} />
+        )}
      </div>
     </>
   );
