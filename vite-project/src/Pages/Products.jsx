@@ -3,6 +3,7 @@ import "./Products.css";
 import product1 from "../assets/foodstufftwo.jpeg";
 import product2 from "../assets/foodstuffthree.jpeg";
 import product3 from "../assets/foodstuff.jpeg";
+
 import ProductCard from "../Components/ProductCard";
 import Modal from "../Components/Modal";
 
@@ -14,8 +15,9 @@ function Products() {
     setSelectedProduct(product);
     setShowModal(true);
   }
-  const handleConfirmAdd = (quantity) => {
-    console.log( `Added ${quantity} of ${selectedProduct.name}`);
+  const handleConfirmAdd = ({ unit, quantity }) => {
+    console.log( `Added ${quantity} ${unit}(s) of ${selectedProduct.name}`);
+    alert(`✅ added ${quantity} ${unit}(s) of ${selectedProduct.name}`);
     setShowModal(false);
   }
   return (
